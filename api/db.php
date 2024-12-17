@@ -24,7 +24,8 @@ class DB{
                 $where=$this->a2s($arg[0]);
                 $sql=$sql . " WHERE ". join(" && ",$where);
             }else{
-                //$sql=$sql.$arg[0];
+                //$sql=$sql.$arg[0];  先取出 $sql 的現有值，然後將 $arg[0] 的值與 $sql 的現有值進行串接，最後，將串接後的結果重新賦值給 $sql。這樣，$sql 變數的值就會是原來的 $sql 加上 $arg[0] 的內容。
+                /**這是一種簡化的寫法，稱為「串接賦值運算符」(concatenation assignment operator)。. 是 PHP 中的串接運算符，用於將兩個字符串連接起來。.= 則是 . 的賦值版本，它的作用是將右邊的值直接附加到左邊的變數上。*/
                 $sql .= $arg[0];
 
             }

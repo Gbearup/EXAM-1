@@ -32,9 +32,9 @@
         </a>
         <div id="ms">
             <div id="lf" style="float:left;">
-                <div id="menuput" class="dbor">
+                <div id="menuput" class="dbor" style="text-align:center" ;>
                     <!--主選單放此-->
-                    <span class="t botli">後台管理選單</span>
+                    <span class=" t botli">後台管理選單</span>
                     <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=title">
                         <div class="mainmu">
                             網站標題管理 </div>

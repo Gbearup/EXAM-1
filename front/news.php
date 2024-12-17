@@ -4,9 +4,53 @@
     </marquee>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
-    <div style="text-align:center;">
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+    <h3 style="text-align:center">更多最新消息資料區</h3>
+    <hr>
+
+    <?php
+
+			    $div=5;
+				$total=$News->count();
+				$pages=ceil($total/$div);
+				$now=$_GET['p']??1;
+				$start=($now-1)*$div;
+				$rows=$News->all(" limit $start,$div");
+				echo "<ol start='".($start+1)."'>";
+
+                foreach($rows as $row){
+                    echo "<li class='sswww'>";
+                    echo mb_substr($row['text'],0,20);
+                        echo "<span class='all' style='display:none'>";
+                        echo $row['text'];
+                        echo "</span>";
+                    echo "</li>";
+                }
+
+
+            ?>
+
+    </ol>
+
+
+    <div class="cent">
+        <?php
+
+                if(($now-1)>0){
+                    $prev=$now-1;
+                    echo "<a href='?do=$do&p=$prev'> < </a>";
+                }
+                for($i=1;$i<=$pages;$i++){
+					$size=($i==$now)?"24px":"16px";
+                    echo "<a href='?do=$do&p=$i' style='font-size:$size'> ";
+                    echo $i;
+                    echo " </a>";
+                }
+                if(($now+1)<=$pages){
+                    $next=$now+1;
+                    echo "<a href='?do=$do&p=$next'> > </a>";
+                }
+
+            ?>
     </div>
 </div>
 <div id="alt"
@@ -15,7 +59,7 @@
 <script>
 $(".sswww").hover(
     function() {
-        $("#alt").html("" + $(this).children(".all").html() + "").css({
+        $("#alt").html("<pre>" + $(this).children(".all").html() + "</pre>").css({
             "top": $(this).offset().top - 50
         })
         $("#alt").show()

@@ -61,16 +61,56 @@
                     onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+
+                    <!-- 啊啊啊啊啊   1217新增程式碼在這邊~~~~開始 -->
+
+                    <!-- 1217-1這是向上的箭頭 -->
+                    <div class='cent' id="up" onclick="pp(1)">
+                        <img src="./icon/up.jpg" alt="" srcset="">
+                    </div>
+
+                    <!-- 1217-2這是中間要顯示圖片的區域 -->
+                    <div class='cent'>
+                        <?php 
+                    $imgs=$Image->all(['sh'=>1]);
+                    foreach($imgs as $idx => $img){
+                        echo "<div class='im' id='ssaa{$idx}'>";
+                        echo "<img src='./upload/{$img['img']}' style='width:150px;height:103px;border:3px solid orange'>";
+                        echo "</div>";
+                    }
+
+                        ?>
+                    </div>
+
+
+                    <!-- 1217-3這是向上的箭頭 -->
+                    <div class='cent' id="dn" onclick="pp(2)">
+                        <img src="./icon/dn.jpg" alt="">
+                    </div>
+
+
+                    <!-- 啊啊啊啊啊 1217新增程式碼在這邊~~~~結束 -->
+
+
+
+                    <!-- 這邊的script控制圖片要不要顯示 -->
+
                     <script>
                     var nowpage = 0,
-                        num = 0;
+                        num = <?=$Image->count(['sh'=>1]);?>;
+                    // 啊啊啊啊 1217 修改num 程式碼在這邊~~~~
+
+                    // 判斷到底是按了哪一個按鈕，用選擇器把所有的圖片都先隱藏起來(先到上面圖片區加上class=im)，算出哪3張會被顯示這個迴圈會跑3次，從0開始
 
                     function pp(x) {
                         var s, t;
                         if (x == 1 && nowpage - 1 >= 0) {
                             nowpage--;
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+
+                        // 啊啊啊啊啊 1217 修改程式碼~~~~本來是*3 +3  改成去掉*3  -3 結束~~
+
+                        if (x == 2 && (nowpage + 1) <= num * 1 - 3) {
                             nowpage++;
                         }
                         $(".im").hide()
@@ -79,6 +119,7 @@
                             $("#ssaa" + t).show()
                         }
                     }
+                    // pp是先執行一次， 觸發全部隱藏， 讓3張顯示出來
                     pp(1)
                     </script>
                 </div>
