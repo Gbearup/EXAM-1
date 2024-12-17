@@ -163,3 +163,14 @@ button:focus {
 	cursor: pointer;
 	text-decoration: none;
 }
+
+/* ㄚㄚㄚㄚㄚㄚㄚ  1217加進來 */
+
+.mw {
+
+	width: 200px;
+	position: absolute;
+	left: 100px;
+	z-index: 99;
+
+}

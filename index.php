@@ -34,6 +34,39 @@
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
+
+                    <!-- ㄚㄚㄚㄚㄚ 1217更新程式碼 開始-->
+                    <?php 
+                        $mains=$Menu->all(['sh'=>1,'main_id'=>0]);
+                        foreach($mains as $main){
+                            echo "<div class='mainmu cent'>";
+                            echo "<a href='{$main['href']}'>";
+                            echo $main['text'];
+                            echo "</a>";
+                            
+                            // 先判斷有沒有次選單，if(有次選單)
+                            echo "<div class='mw'>";
+                            if($Menu->count(['main_id'=>$main['id']])>0){
+                                $subs=$Menu->all(['main_id'=>$main['id']]);
+                                foreach($subs as $sub){
+                                    echo "<div class='mainmu2 cent'>";
+                                    echo "<a href='{$sub['href']}'>";
+                                    echo $sub['text'];  
+                                    echo "</a>";
+                                    echo "</div>";
+                                }
+                            }
+                            // echo "試試看試試看試試看";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+
+
+                    ?>
+
+                    <!-- ㄚㄚㄚㄚㄚ 1217更新程式碼 結束-->
+
+
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :

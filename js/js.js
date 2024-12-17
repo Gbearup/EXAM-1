@@ -1,4 +1,8 @@
 // JavaScript Document
+
+// 1217補充說明  當滑鼠移到mainmu時，他的下一個應該會有一個項目mw把它秀出來
+
+
 $(document).ready(function(e) {
     $(".mainmu").mouseover(
 		function()
