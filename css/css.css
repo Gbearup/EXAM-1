@@ -167,10 +167,13 @@ button:focus {
 /* ㄚㄚㄚㄚㄚㄚㄚ  1217加進來 */
 
 .mw {
-
 	width: 200px;
 	position: absolute;
 	left: 100px;
 	z-index: 99;
+	top: 23px;
+	display: none;
 
 }
+
+/* ㄚㄚㄚㄚㄚㄚㄚ  1217加進來  結束*/
