@@ -1,4 +1,17 @@
-﻿﻿<?php include_once "api/db.php";?>
+﻿﻿<?php include_once "api/db.php";
+
+// yyy1220新增 斯大豆
+// 要session開始執行，要有session start，要清除紀錄要把瀏覽器關掉
+
+if(!isset($_SESSION['login'])){
+    echo "請從登入頁登入<a href='index.php?do=login'>管理登入</a>";
+    exit();
+}
+
+
+
+// yyy1220新增 fi你噓
+?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
